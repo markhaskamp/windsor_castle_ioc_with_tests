@@ -67,12 +67,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Castle_Setup\CastleDependencyResolver.cs" />
+    <Compile Include="Castle_Setup\ControllerInstaller.cs" />
+    <Compile Include="Castle_Setup\DependencyInstaller.cs" />
+    <Compile Include="Castle_Setup\IDependency.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ITeamRepo.cs" />
+    <Compile Include="Repositories\TeamRepo.cs" />
     <Compile Include="Views\ViewModels\Home_ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
