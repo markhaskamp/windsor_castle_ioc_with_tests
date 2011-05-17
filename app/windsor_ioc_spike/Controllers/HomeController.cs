@@ -9,12 +9,15 @@ namespace windsor_ioc_spike.Controllers
         public ITeamRepo teamRepo { get; set; }
         private Home_ViewModel viewModel;
 
+        public HomeController(ITeamRepo teamRepo) {
+            this.teamRepo = teamRepo;
+        }
+
         public ActionResult Index() {
             viewModel = new Home_ViewModel();
             viewModel.Teams = teamRepo.GetAllTeams();
 
             return View(viewModel);
         }
-
     }
 }
