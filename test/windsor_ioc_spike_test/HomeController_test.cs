@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
 using NUnit.Framework;
 using Rhino.Mocks;
 using windsor_ioc_spike.Controllers;
@@ -37,6 +39,20 @@ namespace windsor_ioc_spike_test
             }
 
             mockery.VerifyAll();
+        }
+
+        [Test]
+        public void WindsorCastle_resolves_to_TeamRepo() {
+            // Arrange
+            WindsorContainer container = new WindsorContainer();
+            container.Install(FromAssembly.Containing<HomeController>());
+
+            // Act
+            HomeController controller = container.Resolve<HomeController>();
+
+            // Assert
+            Assert.AreEqual("windsor_ioc_spike.Repositories.TeamRepo", 
+                            controller.teamRepo.GetType().ToString());
         }
     }
 }
